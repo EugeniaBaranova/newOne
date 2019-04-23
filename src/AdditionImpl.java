@@ -1,6 +1,6 @@
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class AdditionImpl extends UnicastRemoteObject implements Addition {
 
@@ -11,9 +11,9 @@ public class AdditionImpl extends UnicastRemoteObject implements Addition {
 	}
 
 	@Override
-	public LocalTime addFiveHours(LocalTime time) throws RemoteException {
-		System.out.println("Someone asked a time in five hours");
-		return time.plusHours(5);
+	public LocalDateTime addFiveHours(LocalDateTime dateTime) throws RemoteException {
+		System.out.println("Someone asked a date-time in five hours");
+		return dateTime.plusHours(5);
 	}	
 
 }

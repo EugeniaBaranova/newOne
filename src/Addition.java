@@ -1,7 +1,7 @@
 import java.rmi.*;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public interface Addition extends Remote {
 	
-	public LocalTime addFiveHours(LocalTime time) throws RemoteException;
+	public LocalDateTime addFiveHours(LocalDateTime dateTime) throws RemoteException;
 }
