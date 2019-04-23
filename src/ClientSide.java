@@ -49,7 +49,7 @@ public class ClientSide {
 	}
 	
 	public static Integer convertToInt(String stringValue, int minIntValue, int maxIntValue) {
-		if(stringValue != null && !stringValue.isEmpty()) {
+		if(stringValue != null && !stringValue.isEmpty() && StringUtils.isNumeral(stringValue)) {
 			int integerValue = Integer.valueOf(stringValue);
 			if(integerValue>=minIntValue && integerValue<=maxIntValue) {
 				return integerValue;
