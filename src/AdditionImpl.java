@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDateTime;
 
-public class AdditionImpl extends UnicastRemoteObject implements Addition {
+public class AdditionImpl extends UnicastRemoteObject implements Addition, Serializable {
 
 	private static final long serialVersionUID = 1L;
 

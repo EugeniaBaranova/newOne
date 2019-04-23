@@ -3,21 +3,21 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javax.swing.JOptionPane;
 
 public class ClientSide {
 	
-	private static Addition addition;
+	private static Addition additionStub;
 
 	public static void main(String[] args) 
 		throws MalformedURLException, RemoteException, NotBoundException {
 				
-		addition = (Addition) Naming.lookup("//localhost/MyServer");
+		additionStub = (Addition) Naming.lookup("//localhost/MyServer");
+		
 		String userResponse = JOptionPane.showInputDialog("Do you what to know what time will be in five hours?");
 		if(userResponse != null && userResponse.equalsIgnoreCase("yes")) {
-			LocalDateTime response = addition.addFiveHours(LocalDateTime.now());
+			LocalDateTime response = additionStub.addFiveHours(LocalDateTime.now());
 			JOptionPane.showMessageDialog(null, response);
 		} else {
 			String secondUserResponse = JOptionPane.showInputDialog("Do you what to know what time will be in five hours from the entered time?");
@@ -37,7 +37,7 @@ public class ClientSide {
 				Integer second = convertToInt(inputedSecond, 0, 59);
 				if(year!=null && month!=null && dayOfMonth!=null && hour!=null && minute!=null && second!=null) {
 					LocalDateTime inputedDateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute, second);
-					LocalDateTime response = addition.addFiveHours(inputedDateTime);
+					LocalDateTime response = additionStub.addFiveHours(inputedDateTime);
 					JOptionPane.showMessageDialog(null, response);
 				} else {
 					JOptionPane.showMessageDialog(null, "You didn't enter valid information.");
